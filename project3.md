@@ -1,23 +1,22 @@
 # Documentation for Project 3 -- SIMPLE TO-DO APPLICATION ON MERN WEB STACK
 
-` STEP - 1 BACKEND CONFIGURATION `
+## STEP - 1 BACKEND CONFIGURATION `
  
-` # Update and upgrade ubuntu EC2 instance `
+* Update and upgrade ubuntu EC2 instance `
 
 ` sudo apt update  && sudo apt upgrade -y ` 
 
 
-` # locate the Node.js software from Ubuntu repositories. `
+* locate the Node.js software from Ubuntu repositories. `
 
 ` curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - `
 
-
-` # Install Node.js on the server `
+*  Install Node.js on the server `
 
 ` sudo apt-get install -y nodejs `
 
 
-` # Note: The command above installs both nodejs and npm.` 
+* Note: The command above installs both nodejs and npm.` 
 
 
 ` node -v  && npm -v are used to verify the installation versions above `
@@ -25,38 +24,38 @@
 ![node and npm version image](./images/project-3-image-1-node-npm-versions.PNG)
 
 
-` # Application Code Setup `
+* Application Code Setup 
 
-` # Create a new directory for your To-Do project and  cd into it `
+* Create a new directory for your To-Do project and  cd into it `
 
 ` mkdir Todo && cd Todo `
 
-` use  npm init to initialise your project, so that a new file named package.json will be created.  Follow the prompts and press Enter several times to accept default values, then accept to write out the package.json file by typing yes. `
+*  use  npm init to initialise your project, so that a new file named package.json will be created.  Follow the prompts and press Enter several times to accept default values, then accept to write out the package.json file by typing yes. 
 
 ` npm init ` 
 
 ![npm init output image](./images/project-3-image-2-npm-init-output.PNG)
 
-` # installing EXPRESSJS `
+* installing EXPRESSJS `
 
 ` npm install express `
 
-` # create a file index.js ` 
+*  create a file index.js ` 
 
 ` touch index.js && ls `
 
-` # Install the dotenv module `
+* Install the dotenv module `
 
 ` npm install dotenv `
 
 ![epressjs and dotevn image](./images/project-3-image-3-espressjs-index-js-output.PNG)
 
 
-` Open the index.js ` 
+* Open the index.js ` 
 
 ` vi index.js `
 
-` Type the code below into it and save. ` 
+* Type the code below into it and save. ` 
 
 ` const express = require('express');
 require('dotenv').config();
@@ -100,7 +99,9 @@ console.log(`Server running on port ${port}`)
 * to display list of all tasks and
 * to delete a completed tasks
 
-` mkdir routes && cd routes && touch api.js && vi api.js and copy the below into the api.js file` 
+` mkdir routes && cd routes && touch api.js && vi api.js 
+
+*  copy the below into the api.js file 
 
 ` const express = require ('express');
 const router = express.Router();
@@ -119,7 +120,7 @@ router.delete('/todos/:id', (req, res, next) => {
 
 module.exports = router; `
 
-` # creating schemma and models ---- lets install mongoose, mkdir models folder under Todo dir, cd into it and tocuh a file called todo.js`
+* creating schemma and models ---- lets install mongoose, mkdir models folder under Todo dir, cd into it and tocuh a file called todo.js`
 
 ` npm install mongoose `
 
@@ -128,7 +129,7 @@ module.exports = router; `
 ![mongoose models and todo.js image](./images/project-3-image-7-mongoose-models-todo-js-output.PNG)
 
 
-` #  under routes dir, edit api.js file and delete all the content and paste the below ` 
+*  under routes dir, edit api.js file and delete all the content and paste the below 
 
 ` const express = require ('express');
 const router = express.Router();
@@ -164,18 +165,18 @@ module.exports = router; `
 
 ` vi api.js  save and exit` 
 
-` # creating MongoDB Database using mLab as DBaaS`
+* creating MongoDB Database using mLab as DBaaS`
 
 
 
-` # starting my server ` 
+* starting my server 
 
 ` node index.js ` 
 
 ![database conection image](./images/project-3-image-8-database-connection-successful.PNG)
 
 
-` # Testing Backend Code without Frontend using RESTful API `
+* Testing Backend Code without Frontend using RESTful API 
 
 ![POST and out put](./images/project-3-image-12-POST-out-put.PNG)
 
@@ -184,17 +185,16 @@ module.exports = router; `
 
 
 
-` Step 2 -- FRONTEND CREATION `
+##  Step 2 -- FRONTEND CREATION 
 
-` # run below at the /Todo dir `
+* run below at the /Todo dir `
 
 `  npx create-react-app client `
 
-` # install concurrently and nodemon `
+* install concurrently and nodemon `
 
 ` npm install concurrently --save-dev  and npm install nodemon --save-dev `
-
-` in Todo dir update with below and delete the line starting with "script "  see image below `
+*  in Todo dir update with below and delete the line starting with "script "  see image below 
 
 ![image of what to delete](./images/projet-3-image-10-delete-image-below.PNG)
 
@@ -206,22 +206,21 @@ module.exports = router; `
 "dev": "concurrently \"npm run start-watch\" \"cd client && npm start\""
 }, `
 
-` # configure proxy in package.json, cd into client, edit package.json and add "proxy": "http://localhost:5000"  and run below command in Todo dir `
+* configure proxy in package.json, cd into client, edit package.json and add "proxy": "http://localhost:5000"  and run below command in Todo dir `
 
 ` npm run dev ` 
 
 ![npm run dev image](./images/project-3-image-9-npm-run-output.PNG)
 
-` # opened port 3000 on my EC2 `
+* opened port 3000 on my EC2 `
 
 ![image for port 3000](./images/project-3-image-11-localhost-3000-open.PNG)
 
-
-` # Creating your React Components from Tod dir ` 
+*  Creating your React Components from Tod dir ` 
 
 ` cd client && cd src && mkdir components && cd components && touch Input.js ListTodo.js Todo.js && vi input.js `
 
-` # install axios in clients dir and  cd src/components and edit ListTodo.js`
+*  install axios in clients dir and  cd src/components and edit ListTodo.js`
 
 ` npm install axios ` 
 
@@ -314,7 +313,9 @@ let { todos } = this.state;
 
 export default Todo; `
 
-` # cd back to src dir and vi App.js paste the below ` 
+* cd back to src dir and vi App.js paste the below 
+
+` cd /src && vi App.js
 
 ` import React from 'react';
 
